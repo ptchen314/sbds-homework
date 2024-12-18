@@ -1,0 +1,229 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+    user-select: none;
+}
+
+body {
+    background: #000;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.game-container {
+    width: 100%;
+    height: 100%;
+    max-width: 500px;
+    aspect-ratio: 9/16;
+    background: url('素材/造台.png') no-repeat center center;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+/* 修改 style.css 中的進度條樣式 */
+.progress-bar {
+    position: relative;
+    width: 100%;
+    padding-top: 37%;
+    overflow: hidden;
+}
+
+.progress-bar-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    z-index: 1;
+}
+
+.progress-container {
+    display: none;
+}
+
+.progress-fill {
+    position: absolute;
+    height: 100%;
+    width: 0%;
+    background-image: url('素材/進度條2.png');
+    background-position: left center;
+    transition: width 0.2s;
+}
+
+.knife-icon, .fire-icon {
+    position: absolute;
+    height: 60%;
+    object-fit: contain;
+    z-index: 3;
+    top: 20%;
+}
+
+.knife-icon {
+    right: 25%;
+}
+
+.fire-icon {
+    right: 10%;
+}
+/* 遊戲區域樣式 */
+.game-area {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.cutting-board {
+    position: relative;
+    width: 90%;
+    aspect-ratio: 4/3;
+}
+
+.board {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.knife {
+    position: absolute;
+    width: 25%;
+    height: auto;
+    top: 40%;
+    right: 15%;
+    transform-origin: center;
+    transition: transform 0.15s;
+}
+
+.carrot {
+    position: absolute;
+    width: 70%;
+    height: auto;
+    top: 55%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.click-hint {
+    display: none;
+}
+
+/* 新增點擊指示圖片樣式 */
+.click-indicator {
+    position: absolute;
+    bottom: 5vh;
+    left: 5vh;
+    width: 15vh;
+    height: 15vh;
+    z-index: 10;
+    object-fit: contain;
+    animation: clickPulse 1s infinite alternate;
+}
+
+@keyframes pulse {
+    0% { opacity: 1; }
+    50% { opacity: 0.5; }
+    100% { opacity: 1; }
+}
+
+/* 適配不同手機尺寸 */
+@media (max-height: 700px) {
+    .click-hint {
+        font-size: 1rem;
+    }
+    .knife {
+        width: 20%;
+    }
+    .carrot {
+        width: 35%;
+    }
+}
+
+@media (max-height: 500px) {
+    .progress-bar {
+        height: 12vh;
+    }
+    .bar {
+        height: 2vh;
+    }
+}
+
+/* 在現有的 CSS 後面添加煮咖哩相關樣式 */
+.curry-area {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.stove {
+    position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.stove-fire {
+    position: absolute;
+    bottom: 35%;
+    width: 110%;
+    z-index: 1;
+}
+
+.pot {
+    position: relative;
+    width: 100%;
+    z-index: 2;
+    top: 20%;
+}
+
+.spoon {
+    position: absolute;
+    width: 60%;
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 4;
+    transition: transform 0.2s;
+}
+
+.spoon.active {
+    display: block;
+}
+
+.spoon.inactive {
+    display: none;
+}
+
+.stir-hint {
+    position: absolute;
+    width: 40%;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 3;
+    opacity: 0.6;
+    animation: pulse 1.5s infinite;
+}
+
+.stir-area {
+    position: absolute;
+    width: 60%;
+    height: 40%;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 5;
+    cursor: pointer;
+} 

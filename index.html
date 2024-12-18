@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>切菜遊戲</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="game-container">
+        <!-- 進度條 -->
+        <div class="progress-bar">
+            <img src="素材/進度條1.png" class="progress-bar-bg" alt="progress bar background">
+            <div class="progress-container">
+                <div class="progress-fill"></div>
+            </div>
+        </div>
+        <img src="素材/點擊指示1.png" class="click-indicator" id="clickIndicator">
+        
+        <!-- 切菜區域 -->
+        <div class="game-area">
+            <div class="cutting-board" id="cuttingBoard">
+                <img src="素材/砧板.png" class="board">
+                <img src="素材/蘿蔔1.png" class="carrot" id="carrot">
+                <img src="素材/菜刀.png" class="knife" id="knife">
+                <div class="click-hint">點擊切菜</div>
+            </div>
+
+            <!-- 煮咖哩區域 -->
+            <div class="curry-area" id="curryArea" style="display: none;">
+                <div class="stove">
+                    <img src="素材/火爐.png" class="stove-fire" alt="stove">
+                    <img src="素材/鍋.png" class="pot" id="pot" alt="pot">
+                </div>
+                <img src="素材/畫圈指示.png" class="stir-hint" id="stirHint" alt="stir hint">
+                <img src="素材/湯匙1.png" class="spoon active" id="spoon" alt="spoon">
+                <div class="stir-area" id="stirArea"></div>
+            </div>
+        </div>
+    </div>
+    <script src="cutting.js"></script>
+    <script src="curry.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            window.cuttingSystem = new CuttingSystem();
+        });
+    </script>
+</body>
+</html> 
